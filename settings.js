@@ -321,5 +321,4 @@ module.exports = {
     paletteCategories: ["Dialogue","Channels", "Action","Push_Notification","Appearance","Natural_Language_Processing","Text_To_Speech","Payment","input","function","output","Analytics","APIs","Data","Developer_Tools","Hanna_App","Hanna_Auth","Hanna_Platforms"],
 
     
-}
 };
