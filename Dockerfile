@@ -43,7 +43,7 @@ COPY --from=build /home/nodered/.node-red/node_modules /home/nodered/.node-red/n
 USER 0
 
 RUN chgrp -R 0 /home/nodered/.node-red \
-  && chmod -R g=u /home/nodered/.node-red
+  && chmod -R g=u /home/nodered/.node-red \
   && chown -R 777 /home/nodered/.node-red
 
 USER 1000
