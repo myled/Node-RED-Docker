@@ -35,7 +35,6 @@ app.use('/health', health.HealthEndpoint(healthcheck));
 var settings = require("./settings.js");
 var fs = require("fs");
 
-
 if(process.env.FLOW_LOGIN){
 
     settings.adminAuth= {
@@ -52,6 +51,14 @@ if(process.env.FLOW_LOGIN){
             }
         ]
     }
+}
+
+if(process.env.HTTPS_LOGIN){
+settings.httpNodeAuth = {
+    user: process.env.HTTPS_LOGIN, 
+    pass: bcrypt.hashSync(process.env.HTTPS_PASSWORD, 8),
+}
+
 }
 
 if (process.env.NODE_RED_TLS_CERT && process.env.NODE_RED_TLS_KEY) {
