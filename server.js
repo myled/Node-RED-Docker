@@ -49,6 +49,13 @@ if(process.env.FLOW_LOGIN){
 }
 
 
+
+if (process.env.NODE_RED_ENABLE_PROJECTS) {
+    settings.editorTheme = settings.editorTheme || {};
+    settings.editorTheme.projects = settings.editorTheme.projects || {};
+    settings.editorTheme.projects.enabled = !/^false$/i.test(process.env.NODE_RED_ENABLE_PROJECTS);
+}
+
 if (process.env.NODE_RED_TLS_CERT && process.env.NODE_RED_TLS_KEY) {
   settings.https = {
     "key" : fs.readFileSync(process.env.NODE_RED_TLS_KEY),
@@ -100,6 +107,13 @@ if (settings.httpAdminRoot !== false) {
 if (settings.httpNodeRoot !== false) {
   settings.httpNodeRoot = formatRoot(settings.httpNodeRoot || settings.httpRoot || "/");
   settings.httpNodeAuth = settings.httpNodeAuth || settings.httpAuth;
+}
+
+if(process.env.HTTPS_LOGIN){
+settings.httpNodeAuth = {
+    user: process.env.HTTPS_LOGIN, 
+    pass: bcrypt.hashSync(process.env.HTTPS_PASSWORD, 8),
+}
 }
 
 if (settings.uiPort === undefined){
