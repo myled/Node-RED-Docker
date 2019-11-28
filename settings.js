@@ -92,7 +92,7 @@ module.exports = {
     // The following property can be used to specify a different root path.
     // If set to false, this is disabled.
     //httpAdminRoot: false,
-  //  httpAdminRoot: "/admin",
+    httpAdminRoot: "/admin",
 
     // Some nodes, such as HTTP In, can be used to listen for incoming http requests.
     // By default, these are served relative to '/'. The following property
@@ -268,57 +268,8 @@ module.exports = {
 
     // Customising the editor
     editorTheme: {
-
         projects: {
             // To enable the Projects feature, set this value to true
             enabled: true
-        },
-
-        page: {
-            title: "Tekos Flow",
-           // favicon: null, //homeDir+"/.node-red/assets/tekos-logo.png",
-            favicon: "/home/nodered/.node-red/assets/tekos-logo.png",
-            // css: "/home/nodered/.node-red/assets/theme.css"
-        },
-        header: {
-            title: " Tekos Flow",
-            image: "/home/nodered/.node-red/assets/tekos-logo.png", // or null to remove image
-          // image: null  //homeDir+"/.node-red/assets/tekos-logo.png", // or null to remove image
-        },
-
-        login: {
-            image: "/home/nodered/.node-red/assets/tekos-logo.png",
-          //  image: null // "/data/assets/tekos-logo.png", // a 256x256 image
-        },
-        
-        menu: {
-            "menu-item-import-library": true,
-            "menu-item-export-library": true,
-            "menu-item-keyboard-shortcuts": true,
-            "menu-item-edit-palette":true,
-            "menu-item-user-settings":true,
-            "menu-item-node-red-version":true,
-            "menu-item-help": {
-                label: "Documentation & Templates",
-                url: "https://tekos.freshdesk.com/support/solutions/43000364195"
-            }
-        },
-
-        palette: {
-            editable: true, // Enable/disable the Palette Manager
-           // catalogues: [   // Alternative palette manager catalogues
-           //     'https://raw.githubusercontent.com/node-red/catalogue.nodered.org/master/catalogue.json'
-           // ],
-            /*theme: [ // Override node colours - rules test against category/type by RegExp.
-                { category: ".*", type: ".*", color: "#90EE90" }
-            ]*/
-        },
-       
-        logout: {
-            redirect: "https://tekos.co" // As of 0.17
-        },  
-    },
-    paletteCategories: ["Dialogue","Channels", "Action","Push_Notification","Appearance","Natural_Language_Processing","Text_To_Speech","Payment","input","function","output","Analytics","APIs","Data","Developer_Tools","Hanna_App","Hanna_Auth","Hanna_Platforms"],
-
-    
-};
+        }
+    }
