@@ -36,6 +36,23 @@ var settings = require("./settings.js");
 var fs = require("fs");
 
 
+if(process.env.FLOW_LOGIN){
+
+    settings.adminAuth= {
+        type: "credentials",
+        users: [{
+                username: process.env.FLOW_LOGIN,
+                password: bcrypt.hashSync(process.env.FLOW_PASSWORD, 8),
+                permissions: "*"
+            },
+            {
+                username: process.env.FLOW_LOGIN_READONLY,
+                password: bcrypt.hashSync(process.env.FLOW_PASSWORD_READONLY, 8),
+                permissions: "read"
+            }
+        ]
+    }
+}
 
 if (process.env.NODE_RED_TLS_CERT && process.env.NODE_RED_TLS_KEY) {
   settings.https = {
