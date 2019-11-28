@@ -43,23 +43,11 @@ if(process.env.FLOW_LOGIN){
                 username: process.env.FLOW_LOGIN,
                 password: bcrypt.hashSync(process.env.FLOW_PASSWORD, 8),
                 permissions: "*"
-            },
-            {
-                username: process.env.FLOW_LOGIN_READONLY,
-                password: bcrypt.hashSync(process.env.FLOW_PASSWORD_READONLY, 8),
-                permissions: "read"
             }
         ]
     }
 }
 
-if(process.env.HTTPS_LOGIN){
-settings.httpNodeAuth = {
-    user: process.env.HTTPS_LOGIN, 
-    pass: bcrypt.hashSync(process.env.HTTPS_PASSWORD, 8),
-}
-
-}
 
 if (process.env.NODE_RED_TLS_CERT && process.env.NODE_RED_TLS_KEY) {
   settings.https = {
