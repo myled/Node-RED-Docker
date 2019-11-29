@@ -6,7 +6,9 @@ RUN apt-get update \
 RUN deluser --remove-home node \
   && groupadd --gid 1000 nodered \
   && useradd --gid nodered --uid 1000 --shell /bin/bash --create-home nodered \
-  && usermod -aG sudo nodered
+  && usermod -aG sudo nodered \
+  && sudo chown -R nodered: /usr/local/lib/node_modules \
+  && sudo chown -R nodered: /home/nodered/.node-red
 
 USER 1000
 
@@ -25,7 +27,9 @@ RUN apt-get update && apt-get install -y perl-modules
 RUN deluser --remove-home node \
   && groupadd --gid 1000 nodered \
   && useradd --gid nodered --uid 1000 --shell /bin/bash --create-home nodered \
-  && usermod -aG sudo nodered
+  && usermod -aG sudo nodered \
+  && sudo chown -R nodered: /usr/local/lib/node_modules \
+  && sudo chown -R nodered: /home/nodered/.node-red
 
 USER 1000
 
