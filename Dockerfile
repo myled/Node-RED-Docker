@@ -30,7 +30,7 @@ USER 1000
 RUN mkdir -p /home/nodered/.node-red
 
 WORKDIR /home/nodered/.node-red
-RUN chown 755 nodered: /home/nodered/.node-red
+
 
 COPY --chown=nodered ./server.js /home/nodered/.node-red/
 COPY --chown=nodered ./settings.js /home/nodered/.node-red/
@@ -38,6 +38,8 @@ COPY --chown=nodered ./flows.json /home/nodered/.node-red/
 COPY --chown=nodered ./flows_cred.json /home/nodered/.node-red/
 COPY --chown=nodered ./package.json /home/nodered/.node-red/
 COPY --chown=nodered --from=build /home/nodered/.node-red/node_modules /home/nodered/.node-red/node_modules
+
+RUN chown 755 nodered:nodered /home/nodered/.node-red
 
 USER 0
 
