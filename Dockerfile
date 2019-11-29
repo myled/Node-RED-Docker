@@ -39,12 +39,12 @@ COPY ./package.json /home/nodered/.node-red/
 COPY ./assets/tekos-logo.png /home/nodered/.node-red/assets/
 COPY --from=build /home/nodered/.node-red/node_modules /home/nodered/.node-red/node_modules
 
+RUN chmod -R a+rw /home/nodered/.node-red
 
 USER 0
 
 RUN chgrp -R 0 /home/nodered/.node-red \
-  && chmod -R g=u /home/nodered/.node-red \
-  && chown -R 777 /home/nodered/.node-red
+  && chmod -R g=u /home/nodered/.node-red 
 
 USER 1000
 
