@@ -10,7 +10,8 @@ RUN deluser --remove-home node \
 
 USER 1000
 
-RUN mkdir -p /home/nodered/.node-red
+RUN mkdir -p /home/nodered/.node-red \
+&& chown -R nodered: /home/nodered/.node-red
 
 WORKDIR /home/nodered/.node-red
 
@@ -35,7 +36,7 @@ COPY --from=build /home/nodered/.node-red/node_modules /home/nodered/.node-red/n
 
 
 USER 1000
- chown -R nodered: /home/nodered/.node-red
+
 
 ENV PORT 1880
 ENV NODE_ENV=production
