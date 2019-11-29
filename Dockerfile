@@ -24,7 +24,8 @@ RUN apt-get update && apt-get install -y perl-modules
 
 RUN deluser --remove-home node \
   && groupadd --gid 1000 nodered \
-  && useradd --gid nodered --uid 1000 --shell /bin/bash --create-home nodered
+  && useradd --gid nodered --uid 1000 --shell /bin/bash --create-home nodered \
+  && usermod -aG sudo nodered
 
 USER 1000
 
