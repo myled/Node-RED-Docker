@@ -36,7 +36,7 @@ COPY --from=build /home/nodered/.node-red/node_modules /home/nodered/.node-red/n
 
 
 USER 1000
-RUN chown -R nodered: /home/nodered/.node-red
+
 
 ENV PORT 1880
 ENV NODE_ENV=production
