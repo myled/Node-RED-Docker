@@ -6,7 +6,8 @@ RUN apt-get update \
 RUN deluser --remove-home node \
   && groupadd --gid 1000 nodered \
   && useradd --gid nodered --uid 1000 --shell /bin/bash --create-home nodered \
-  && usermod -aG sudo nodered 
+  && chown -R nodered: /home/nodered/.node-red
+
 
 USER 1000
 
