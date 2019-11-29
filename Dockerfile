@@ -31,7 +31,6 @@ RUN mkdir -p /home/nodered/.node-red
 
 WORKDIR /home/nodered/.node-red
 
-
 COPY --chown=nodered ./server.js /home/nodered/.node-red/
 COPY --chown=nodered ./settings.js /home/nodered/.node-red/
 COPY --chown=nodered ./flows.json /home/nodered/.node-red/
