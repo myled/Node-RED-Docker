@@ -38,8 +38,6 @@ COPY --chown=nodered ./flows_cred.json /home/nodered/.node-red/
 COPY --chown=nodered ./package.json /home/nodered/.node-red/
 COPY --chown=nodered --from=build /home/nodered/.node-red/node_modules /home/nodered/.node-red/node_modules
 
-RUN chown 755 nodered:nodered /home/nodered/.node-red
-
 USER 0
 
 RUN chgrp -R 0 /home/nodered/.node-red \
