@@ -5,8 +5,7 @@ RUN apt-get update \
 
 RUN deluser --remove-home node \
   && groupadd --gid 1000 nodered \
-  && useradd --gid nodered --uid 1000 --shell /bin/bash --create-home nodered \
-  && chown -R nodered: /home/nodered/.node-red
+  && useradd --gid nodered --uid 1000 --shell /bin/bash --create-home nodered 
 
 
 USER 1000
@@ -33,12 +32,10 @@ COPY ./assets/tekos-logo.png /home/nodered/.node-red/assets/
 COPY --from=build /home/nodered/.node-red/node_modules /home/nodered/.node-red/node_modules
 
 
-USER 0
 
-RUN chgrp -R 0 /home/nodered/.node-red \
-  && chmod -R g=u /home/nodered/.node-red 
 
 USER 1000
+ chown -R nodered: /home/nodered/.node-red
 
 ENV PORT 1880
 ENV NODE_ENV=production
