@@ -278,7 +278,7 @@ module.exports = {
             title: "Tekos Flow",
            // favicon: null, //homeDir+"/.node-red/assets/tekos-logo.png",
             favicon: "/home/nodered/.node-red/assets/tekos-logo.png",
-            // css: "/home/nodered/.node-red/assets/theme.css"
+            css: "/home/nodered/.node-red/assets/theme.css"
         },
         header: {
             title: " Tekos Flow",
