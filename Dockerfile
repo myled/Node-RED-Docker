@@ -30,6 +30,7 @@ COPY ./flows.json /home/nodered/.node-red/
 COPY ./flows_cred.json /home/nodered/.node-red/
 COPY ./package.json /home/nodered/.node-red/
 COPY ./assets/tekos-logo.png /home/nodered/.node-red/assets/
+COPY ./assets/theme.css /home/nodered/.node-red/assets/
 COPY --from=build /home/nodered/.node-red/node_modules /home/nodered/.node-red/node_modules
 
 
