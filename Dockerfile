@@ -7,32 +7,31 @@ RUN deluser --remove-home node \
   && groupadd --gid 1000 nodered \
   && useradd --gid nodered --uid 1000 --shell /bin/bash --create-home nodered 
 
+RUN mkdir -p /data1 && chown 1000 /data1
 
 USER 1000
 
-RUN mkdir -p /home/nodered/.node-red \
-&& chown -R nodered: /home/nodered/.node-red
 
-WORKDIR /home/nodered/.node-red
+WORKDIR /data1
 
-COPY ./package.json /home/nodered/.node-red/
+COPY ./package.json /data1/
 RUN npm install
 
 ## Release image
 FROM build
 
 
-WORKDIR /home/nodered/.node-red */
+WORKDIR /data1 */
 
-COPY ./server.js /home/nodered/.node-red/
-COPY ./settings.js /home/nodered/.node-red/
-COPY ./flows.json /home/nodered/.node-red/
-COPY ./flows_cred.json /home/nodered/.node-red/
-COPY ./package.json /home/nodered/.node-red/
-COPY ./assets/tekos-logo.png /home/nodered/.node-red/assets/
-COPY ./assets/theme.css /home/nodered/.node-red/assets/
+COPY ./server.js /data1/
+COPY ./settings.js /data1/
+COPY ./flows.json /data1/
+COPY ./flows_cred.json /data1/
+COPY ./package.json /data1/
+COPY ./assets/tekos-logo.png /data1/assets/
+COPY ./assets/theme.css /data1/assets/
 COPY ./editor.json /usr/local/lib/node_modules/node-red/node_modules/@node-red/editor-client/locales/en-US/
-COPY --from=build /home/nodered/.node-red/node_modules /home/nodered/.node-red/node_modules
+COPY --from=build /data1/node_modules /data1/node_modules
 
 
 
@@ -42,7 +41,7 @@ USER 1000
 
 ENV PORT 1880
 ENV NODE_ENV=production
-ENV NODE_PATH=/home/nodered/.nodered/node_modules
+ENV NODE_PATH=/data1/node_modules
 EXPOSE 1880
 
-CMD ["node", "/home/nodered/.node-red/server.js", "/home/nodered/.node-red/flows.json"]
+CMD ["node", "/data1/server.js", "/data1/flows.json"]
