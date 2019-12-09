@@ -1,6 +1,6 @@
 # Tekos Flow - Node-RED-Docker
 
-visit https://tekos.co
+Visit https://tekos.co
 
 Docker Image inspired from binnes/Node-RED-Docker
 
@@ -9,5 +9,6 @@ Docker Image inspired from binnes/Node-RED-Docker
 ### Envrionment variables
 
 FLOW_LOGIN : user login to acces to the editor
+
 FLOW_PASSWORD: password credential. this password will be encrypted
 
