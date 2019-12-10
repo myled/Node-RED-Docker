@@ -136,3 +136,4 @@ server.listen(settings.uiPort);
 
 // Start the runtime
 RED.start();
+© 2019 GitHub, Inc.
