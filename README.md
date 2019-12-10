@@ -1,4 +1,4 @@
-# Tekos Flow - Node-RED-Docker
+# Tekos Flow
 
 Visit https://tekos.co
 
@@ -12,7 +12,7 @@ FLOW_PASSWORD: password credential. this password will be encrypted
 
 ENABLE_PROJECTS: true or false
 
-
+Node-Red Fork
 Docker Image inspired from binnes/Node-RED-Docker
 
 
