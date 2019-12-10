@@ -269,10 +269,10 @@ module.exports = {
     // Customising the editor
     editorTheme: {
 
-   //     projects: {
+        projects: {
           // To enable the Projects feature, set this value to true
-     //       enabled: true
-     //   },
+         //   enabled: false
+        },
 
         page: {
             title: "Tekos Flow",
