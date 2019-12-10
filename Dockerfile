@@ -28,8 +28,8 @@ RUN mkdir -p /data && chown 1000 /data
 
 USER 1000
 
-COPY ./assets/tekos-logo.png /data1/assets/
-COPY ./assets/theme.css /data1/assets/
+COPY ./assets/tekos-logo.png /data/assets/
+COPY ./assets/theme.css /data/assets/
 COPY ./editor.json /usr/local/lib/node_modules/node-red/node_modules/@node-red/editor-client/locales/en-US/
 COPY ./server.js /data/
 COPY ./settings.js /data/
