@@ -82,11 +82,11 @@ module.exports = {
     // By default, all user data is stored in a directory called `.node-red` under
     // the user's home directory. To use a different location, the following
     // property can be used
-    userDir: '/home/nodered/.node-red/',
+    userDir: '/data/',
 
     // Node-RED scans the `nodes` directory in the userDir to find local node files.
     // The following property can be used to specify an additional directory to scan.
-    nodesDir: '/home/nodered/.node-red/nodes',
+    nodesDir: '/data/nodes',
 
     // By default, the Node-RED UI is available at http://localhost:1880/
     // The following property can be used to specify a different root path.
@@ -277,17 +277,17 @@ module.exports = {
         page: {
             title: "Tekos Flow",
            // favicon: null, //homeDir+"/.node-red/assets/tekos-logo.png",
-            favicon: "/home/nodered/.node-red/assets/tekos-logo.png",
-            css: "/home/nodered/.node-red/assets/theme.css"
+            favicon: "/data/assets/tekos-logo.png",
+            css: "/data/assets/theme.css"
         },
         header: {
             title: " Tekos Flow",
-            image: "/home/nodered/.node-red/assets/tekos-logo.png", // or null to remove image
+            image: "/data/assets/tekos-logo.png", // or null to remove image
           // image: null  //homeDir+"/.node-red/assets/tekos-logo.png", // or null to remove image
         },
 
         login: {
-            image: "/home/nodered/.node-red/assets/tekos-logo.png",
+            image: "/data/assets/tekos-logo.png",
           //  image: null // "/data/assets/tekos-logo.png", // a 256x256 image
         },
         
