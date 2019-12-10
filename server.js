@@ -50,10 +50,10 @@ if(process.env.FLOW_LOGIN){
 
 
 
-if (process.env.ENABLE_PROJECTS) {
+if (process.env.NODE_RED_ENABLE_PROJECTS) {
     settings.editorTheme = settings.editorTheme || {};
     settings.editorTheme.projects = settings.editorTheme.projects || {};
-    settings.editorTheme.projects.enabled = !/^false$/i.test(process.env.ENABLE_PROJECTS);
+    settings.editorTheme.projects.enabled = !/^false$/i.test(process.env.NODE_RED_ENABLE_PROJECTS);
 }
 
 if (process.env.NODE_RED_TLS_CERT && process.env.NODE_RED_TLS_KEY) {
