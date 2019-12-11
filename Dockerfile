@@ -5,51 +5,44 @@ RUN apt-get update \
 
 RUN deluser --remove-home node \
   && groupadd --gid 1000 nodered \
-  && useradd --gid nodered --uid 1000 --shell /bin/bash --create-home nodered
+  && useradd --gid nodered --uid 1000 --shell /bin/bash --create-home nodered 
 
-RUN mkdir -p /data && chown 1000 /data
 
 USER 1000
-WORKDIR /data
 
-COPY ./package.json /data/
+RUN mkdir -p /home/nodered/.node-red \
+&& chown -R nodered: /home/nodered/.node-red
+
+WORKDIR /home/nodered/.node-red
+
+COPY ./package.json /home/nodered/.node-red/
 RUN npm install
 
 ## Release image
-FROM node:lts-slim
+FROM build
 
-RUN apt-get update && apt-get install -y perl-modules && rm -rf /var/lib/apt/lists/*
 
-RUN deluser --remove-home node \
-  && groupadd --gid 1000 nodered \
-  && useradd --gid nodered --uid 1000 --shell /bin/bash --create-home nodered
+WORKDIR /home/nodered/.node-red */
 
-RUN mkdir -p /data && chown 1000 /data
-
-USER 1000
-
-COPY ./assets/tekos-logo.png /data/assets/
-COPY ./assets/theme.css /data/assets/
+COPY ./server.js /home/nodered/.node-red/
+COPY ./settings.js /home/nodered/.node-red/
+COPY ./flows.json /home/nodered/.node-red/
+COPY ./flows_cred.json /home/nodered/.node-red/
+COPY ./package.json /home/nodered/.node-red/
+COPY ./assets/tekos-logo.png /home/nodered/.node-red/assets/
+COPY ./assets/theme.css /home/nodered/.node-red/assets/
 COPY ./editor.json /usr/local/lib/node_modules/node-red/node_modules/@node-red/editor-client/locales/en-US/
-COPY ./server.js /data/
-COPY ./settings.js /data/
-COPY ./flows.json /data/
-COPY ./flows_cred.json /data/
-COPY ./package.json /data/
-COPY --from=build /data/node_modules /data/node_modules
+COPY --from=build /home/nodered/.node-red/node_modules /home/nodered/.node-red/node_modules
 
-USER 0
 
-RUN chgrp -R 0 /data \
-  && chmod -R g=u /data
+
 
 USER 1000
 
-WORKDIR /data
 
 ENV PORT 1880
 ENV NODE_ENV=production
-ENV NODE_PATH=/data/node_modules
+ENV NODE_PATH=/home/nodered/.nodered/node_modules
 EXPOSE 1880
 
-CMD ["node", "/data/server.js", "/data/flows.json"]
+CMD ["node", "/home/nodered/.node-red/server.js", "/home/nodered/.node-red/flows.json"]
